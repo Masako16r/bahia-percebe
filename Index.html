@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahía Percebe</title>
+    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/secciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-crown"></i> Bahía Percebe
+                </a>
+                <div class="nav-links">
+                    <a href="#" onclick="toggleMenu()">Menú</a>
+                    <a href="#">Ofertas especiales</a>
+                    <a href="#">Vales de regalo</a>
+                    <a href="#">Libro</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <nav class="menu-dropdown" id="menuDropdown">
+        <div class="menu-header">
+            <span class="language">Inglés</span>
+            <span class="language">Español</span>
+            <span class="language">Francés</span>
+            <span class="close-menu" onclick="toggleMenu()">✕</span>
+        </div>
+        <ul class="menu-list">
+            <li><a href="/login.html">Login</a></li>
+            <li>Inicio</li>
+            <li>Hotel</li>
+            <li><a href="/habit.html">Habitaciones y suites</a></li>
+            <li>Restaurante y bar</li>
+            <li>Gym</li>
+            <li>Spa & Bienestar</li>
+            <li>Exterior</li>
+            <li>Ofertas especiales</li>
+            <li>Vales regalo</li>
+            <li>Prepara tu viaje</li>
+            <li>Contacto</li>
+        </ul>
+        <div class="email">
+            <i class="fas fa-envelope"></i> Correo
+        </div>
+    </nav>
+
+    <div class="scroll-indicator">
+        <div class="scroll-dot active"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+        <div class="scroll-dot"></div>
+    </div>
+
+    <main class="main-content">
+        <section class="seccion1" id="seccion1">
+            <div class="container">
+                <div class="content" style="display: block; width: 1000px; height: 562px;">
+                    <div class="container-full">
+                        <div class="animated hue"></div>
+                        <img class="backgroundImage" src="img/room.jpg">
+                        <div class="container">
+                            <div class="cube">
+                                <div class="face top"></div>
+                                <div class="face bottom"></div>
+                                <div class="face left text"></div>
+                                <div class="face right text"></div>
+                                <div class="face front"></div>
+                                <div class="face back text"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion2" id="seccion2">
+            <h2>Habitaciones y Suites</h2>
+            <p>Comodidad y lujo en cada rincón.</p>
+        </section>
+
+        <section class="seccion3" id="seccion3">
+            <h2>Restaurante y Bar</h2>
+            <p>Una experiencia culinaria inolvidable.</p>
+        </section>
+
+        <section class="seccion4" id="seccion4">
+            <h2>Spa y Bienestar</h2>
+            <p>Relájate y revitaliza tu cuerpo y mente.</p>
+        </section>
+
+        <section class="seccion5" id="seccion5">
+            <h2>Actividades al Aire Libre</h2>
+            <p>Explora y disfruta de la naturaleza única de Córcega.</p>
+        </section>
+
+        <section class="seccion6" id="seccion6">
+            <h2>Contacto y Reservas</h2>
+            <p>Estamos aquí para ayudarte a planificar tu estadía perfecta.</p>
+        </section>
+    </main>
+</body>
+</html>
