@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMAMI - Experiencia Gastronómica</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+</head>
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i> Bahía Percebe
+            </a>
+            <div class="nav-links">
+                <a href="#" onclick="toggleMenu()">Menú</a>
+                <a href="#">Ofertas especiales</a>
+                <a href="#">Vales de regalo</a>
+                <a href="reservas.html">Libro</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<nav class="menu-dropdown" id="menuDropdown">
+    <div class="menu-header">
+        <span class="language">Inglés</span>
+        <span class="language">Español</span>
+        <span class="language">Francés</span>
+        <span class="close-menu" onclick="toggleMenu()">✕</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="/login.html">Login</a></li>
+        <li><a href="/Index.html"></a></li>
+        <li>Hotel</li>
+        <li><a href="/log.html">Habitaciones y suites</a></li>
+        <li><a href="/restaurante.html">Restaurante y bar</a></li>
+        <li><a href="/actividades.html"> Actividades</a></li>
+        <li>Spa & Bienestar</li>
+        <li>Exterior</li>
+        <li>Ofertas especiales</li>
+        <li>Vales regalo</li>
+        <li>Prepara tu viaje</li>
+        <li><a href="/contacto2.html">Contacto</a></li>
+    </ul>
+    <div class="email">
+        <i class="fas fa-envelope"></i> Correo
+    </div>
+</nav>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BAHÍA PERCEBE</h1>
+            <p>Un hotel de super lujo</p>
+        </div>
+    </section>
+
+    <div class="scroll-text">BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE</div>
+
+    <section class="menu-section">
+        <div class="menu-item">
+            <img src="img/habitacionfon.jpg" alt="habitacion ">
+            <div class="menu-text">
+                <h2>Habitaciones y Suites</h2>
+                <p>Sumérgete en un ambiente auténtico en
+                    nuestras exclusivas habitaciones. Diseñadas
+                    para ofrecer la máxima comodidad, cada
+                    espacio combina materiales naturales, como
+                    madera cálida y piedra, con detalles modernos
+                    que evocan sofisticación.</p>
+                <span class="button"><a href="log.html">Reservar</a></span>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="img/restaurantefon.jpg" alt="restaurante ">
+            <div class="menu-text">
+                <h2>Restaurante y Bar</h2>
+                <p>Descubre nuestro restaurante y bar, con su
+                    hermosa terraza con vistas al mar, y también
+                    se verá las impresionantes vistas del paraíso del
+                    mediterráneo</p>
+                <span class="button"><a href="restaurante.html">Reservar</a></span>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="img/spafon.jpg" alt="habitacion ">
+            <div class="menu-text">
+                <h2>Spa y Bienestar</h2>
+                <p>Relájate y revitaliza tu cuerpo y mente.</p>
+                <span class="button"><a href="log.html">Reservar</a></span>
+            </div>
+        </div>
+
+
+        <div class="menu-item">
+            <img src="img/actividadfon.jpg" alt="habitacion ">
+            <div class="menu-text">
+                <h2>Actividades al Aire Libre</h2>
+                <p>Explora y disfruta de la naturaleza única de Córcega.</p>
+                <span class="button"><a href="actividades.html">Reservar</a></span>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="experience">
+        <div class="card">
+            <p class="heading"><a href="/contacto2.html">
+                Contacta con nosotros</a>
+            </p>
+            <p>Bhaia Percebe</p>
+        </div>
+
+            
+    </section>
+
+    
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animación del hero
+        gsap.to('.hero-content', {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: 'power3.out',
+            delay: 0.5
+        });
+
+        // Animación del texto de scroll
+        gsap.to('.scroll-text', {
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1
+            },
+            x: '-50%'
+        });
+
+        // Animación de los platos del menú
+        gsap.utils.toArray('.menu-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                opacity: 0,
+                y: 100,
+                duration: 1,
+                delay: i * 0.2
+            });
+        });
+
+        // Animación de las imágenes parallax
+        gsap.utils.toArray('.parallax-image').forEach((image, i) => {
+            gsap.to(image, {
+                scrollTrigger: {
+                    trigger: '.experience',
+                    start: 'top center',
+                    end: 'bottom center',
+                    toggleActions: 'play none none reverse',
+                    scrub: true
+                },
+                opacity: 1,
+                scale: 1,
+                y: i * 50,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animación de la sección de contacto
+        gsap.to('.contact-content', {
+            scrollTrigger: {
+                trigger: '.contact',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1
+        });
+    </script>
+</body>
+</html>

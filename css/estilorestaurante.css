@@ -1,0 +1,197 @@
+      :root {
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --accent: #e6b17e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            opacity: 0;
+        }
+
+        .hero h1 {
+            font-size: 8vw;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            letter-spacing: 0.5em;
+            color: var(--accent);
+        }
+
+        .menu-section {
+            padding: 15vh 10vw;
+            display: flex;
+            flex-direction: column;
+            gap: 20vh;
+        }
+
+        .menu-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5vw;
+    align-items: center;
+    opacity: 1; /* Cambiado a 1 */
+    transform: translateY(0); /* Cambiado a 0 */
+}
+
+        .menu-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            direction: ltr;
+        }
+
+        .menu-text {
+            direction: ltr;
+            padding: 2rem;
+        }
+
+        .menu-text h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .menu-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #999;
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .experience {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax-images {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .parallax-image {
+            position: absolute;
+            width: 30vw;
+            height: 40vh;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .parallax-image:nth-child(1) {
+            left: 10%;
+            top: 3%;
+        }
+
+        .parallax-image:nth-child(2) {
+            right: 10%;
+            top: 9%;
+        }
+
+        .parallax-image:nth-child(3) {
+            left: 30%;
+            bottom: 10%;
+        }
+
+        .contact {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5vh 0;
+        }
+
+        .contact-content {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .contact h2 {
+            font-size: 5vw;
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            color: #999;
+            margin-bottom: 3rem;
+        }
+
+        .scroll-text {
+            position: fixed;
+            white-space: nowrap;
+            bottom: 2rem;
+            font-size: 10rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.03);
+            z-index: -1;
+            width: 200%;
+        }
+
+        @media (max-width: 768px) {
+            .menu-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .menu-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .hero h1 {
+                font-size: 12vw;
+            }
+
+            .menu-text h2 {
+                font-size: 2rem;
+            }
+
+            .parallax-image {
+                width: 80vw;
+            }
+        }
+
+        

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitaciones del Hotel</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilolog.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i> Bahía Percebe
+            </a>
+            <div class="nav-links">
+                <a href="#" onclick="toggleMenu()">Menú</a>
+                <a href="#">Ofertas especiales</a>
+                <a href="#">Vales de regalo</a>
+                <a href="reservas.html">Libro</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<nav class="menu-dropdown" id="menuDropdown">
+    <div class="menu-header">
+        <span class="language">Inglés</span>
+        <span class="language">Español</span>
+        <span class="language">Francés</span>
+        <span class="close-menu" onclick="toggleMenu()">✕</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="/login.html">Login</a></li>
+        <li><a href="/Index.html">Inicio</a></li>
+        <li>Hotel</li>
+        <li><a href="/log.html">Habitaciones y suites</a></li>
+        <li><a href="/restaurante.html">Restaurante y bar</a></li>
+        <li><a href="/actividades.html"> Actividades</a></li>
+        <li>Spa & Bienestar</li>
+        <li>Exterior</li>
+        <li>Ofertas especiales</li>
+        <li>Vales regalo</li>
+        <li>Prepara tu viaje</li>
+        <li><a href="/contacto2.html">Contacto</a></li>
+    </ul>
+    <div class="email">
+        <i class="fas fa-envelope"></i> Correo
+    </div>
+</nav>
+<body>
+    <div class="section">
+        <!-- Reemplazamos moving-image por video-background -->
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="https://download-video-ak.vimeocdn.com/v3-1/playback/9462809f-6b67-4761-8061-e221f6696a9a/92d0287b-79421296?__token__=st=1737537671~exp=1737552071~acl=%2Fv3-1%2Fplayback%2F9462809f-6b67-4761-8061-e221f6696a9a%2F92d0287b-79421296%2A~hmac=bb4fd109d259f77ddc6140d359fcff799da1bbafa71df8a07149407f3be39ad7&r=dXMtZWFzdDE%3D" type="video/mp4">
+            </video>
+        </div>
+        <div class="shadow-title">bahía percebe</div>
+        <ul class="case-study-wrapper">
+            <li class="case-study-name">
+                <a href="#" class="hover-target">tanya</a>
+            </li>
+            <li class="case-study-name">
+                <a href="#" class="hover-target">helen</a>
+            </li>
+            <li class="case-study-name">
+                <a href="#" class="hover-target">andrea</a>
+            </li>
+            <li class="case-study-name">
+                <a href="#" class="hover-target">diana</a>
+            </li>
+        </ul>
+        <ul class="case-study-images">
+            <li>
+                <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite.jpg" alt="Suite Tanya">
+                <p>suite tanya</p>
+                <div class="info">
+                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-2-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket-bathroom.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket-living-room.jpg" alt="amenity">
+                    <a href="#" class="hover-target">info</a>
+                </div>
+            </li>
+            <li>
+                <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-6-star-hotel-panoramic-ocean-view.jpg" alt="Suite Helen">
+                <p>suite helen</p>
+                <div class="info">
+                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-6-star-hotel-residence-sripanwa.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-residence-6-star-hotel.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-residence-sunset-view.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-hotel-private-luxury-pool-villa-6-star-hotel-bathroom.jpg" alt="amenity">
+                    <a href="#" class="hover-target">info</a>
+                </div>
+            </li>
+            <li>
+                <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-infinity-pool.jpg" alt="Suite Andrea">
+                <p>suite andrea</p>
+                <div class="info">
+                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-pool-villa.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-pool-villa-master-room.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-luxury-hotel-resort-thailand.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-outdoor-living-room.jpg" alt="amenity">
+                    <a href="#" class="hover-target">info</a>
+                </div>
+            </li>
+            <li>
+                <img src="https://www.sripanwa.com/images/villas/presidential-5br-pool-villa-private-luxury-hotel-phuket.jpg" alt="Suite Diana">
+                <p>suite diana</p>
+                <div class="info">
+                    <img src="https://www.sripanwa.com/images/villas/presidential-5-bedroom-pool-villa-private-luxury-hotel-phuket-ocean-view.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/presidential-5br-pool-villa-private-luxury-hotel-phuket-bathroom.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/presidential-5-bedroom-pool-villa-private-luxury-hotel-phuket-bathroom.jpg" alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/presidential-five-bedroom-residence-villa-in-phuket-private-pool-andaman-sea-views.jpg" alt="amenity">
+                    <a href="#" class="hover-target">info</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class='cursor' id="cursor"></div>
+    <div class='cursor2' id="cursor2"></div>
+    <div class='cursor3' id="cursor3"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        (function($) {
+            "use strict";
+
+            // Cursor movement
+            document.getElementsByTagName("body")[0].addEventListener("mousemove", function(n) {
+                t.style.left = n.clientX + "px",
+                t.style.top = n.clientY + "px",
+                e.style.left = n.clientX + "px",
+                e.style.top = n.clientY + "px",
+                i.style.left = n.clientX + "px",
+                i.style.top = n.clientY + "px"
+            });
+
+            var t = document.getElementById("cursor"),
+                e = document.getElementById("cursor2"),
+                i = document.getElementById("cursor3");
+
+            function n(t) {
+                e.classList.add("hover"), i.classList.add("hover")
+            }
+
+            function s(t) {
+                e.classList.remove("hover"), i.classList.remove("hover")
+            }
+
+            s();
+            for (var r = document.querySelectorAll(".hover-target"), a = r.length - 1; a >= 0; a--) {
+                o(r[a])
+            }
+
+            function o(t) {
+                t.addEventListener("mouseover", n), t.addEventListener("mouseout", s)
+            }
+
+            // Background movement
+            var pos = 0;
+            window.setInterval(function() {
+                pos++;
+                document.getElementsByClassName('moving-image')[0].style.backgroundPosition = pos + "px 0px";
+            }, 18);
+
+            // Room selection
+            $(document).ready(function() {
+                $('.case-study-name:nth-child(1)').on('mouseenter', function() {
+                    $('.case-study-name.active').removeClass('active');
+                    $('.case-study-images li.show').removeClass("show");
+                    $('.case-study-images li:nth-child(1)').addClass("show");
+                    $('.case-study-name:nth-child(1)').addClass('active');
+                });
+
+                $('.case-study-name:nth-child(2)').on('mouseenter', function() {
+                    $('.case-study-name.active').removeClass('active');
+                    $('.case-study-images li.show').removeClass("show");
+                    $('.case-study-images li:nth-child(2)').addClass("show");
+                    $('.case-study-name:nth-child(2)').addClass('active');
+                });
+
+                $('.case-study-name:nth-child(3)').on('mouseenter', function() {
+                    $('.case-study-name.active').removeClass('active');
+                    $('.case-study-images li.show').removeClass("show");
+                    $('.case-study-images li:nth-child(3)').addClass("show");
+                    $('.case-study-name:nth-child(3)').addClass('active');
+                });
+
+                $('.case-study-name:nth-child(4)').on('mouseenter', function() {
+                    $('.case-study-name.active').removeClass('active');
+                    $('.case-study-images li.show').removeClass("show");
+                    $('.case-study-images li:nth-child(4)').addClass("show");
+                    $('.case-study-name:nth-child(4)').addClass('active');
+                });
+
+                // Trigger first room on load
+                $('.case-study-name:nth-child(1)').trigger('mouseenter');
+            });
+
+        })(jQuery);
+    </script>
+</body>
+</html>

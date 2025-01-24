@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMAMI - Experiencia Gastronómica</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/estilorestaurante.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i> Bahía Percebe
+            </a>
+            <div class="nav-links">
+                <a href="#" onclick="toggleMenu()">Menú</a>
+                <a href="#">Ofertas especiales</a>
+                <a href="#">Vales de regalo</a>
+                <a href="reservas.html">Libro</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<nav class="menu-dropdown" id="menuDropdown">
+    <div class="menu-header">
+        <span class="language">Inglés</span>
+        <span class="language">Español</span>
+        <span class="language">Francés</span>
+        <span class="close-menu" onclick="toggleMenu()">✕</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="/login.html">Login</a></li>
+        <li><a href="/Index.html">Inicio</a></li>
+        <li>Hotel</li>
+        <li><a href="/log.html">Habitaciones y suites</a></li>
+        <li><a href="/restaurante.html">Restaurante y bar</a></li>
+        <li><a href="/actividades.html"> Actividades</a></li>
+        <li>Spa & Bienestar</li>
+        <li>Exterior</li>
+        <li>Ofertas especiales</li>
+        <li>Vales regalo</li>
+        <li>Prepara tu viaje</li>
+        <li><a href="/contacto2.html">Contacto</a></li>
+    </ul>
+    <div class="email">
+        <i class="fas fa-envelope"></i> Correo
+    </div>
+</nav>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BAHÍA PERCEBE</h1>
+            <p>EXPERIENCIA GASTRONÓMICA</p>
+        </div>
+    </section>
+
+    <div class="scroll-text">SABOR · EXPERIENCIA · PASIÓN · ARTE · SABOR · EXPERIENCIA · PASIÓN · ARTE</div>
+
+    <section class="menu-section">
+        <div class="menu-item">
+            <img src="https://www.babaphuket.com/images/dining/best-thai-restaurants-phuket-crab-meat-with-curry-powder.jpg" alt="Plato 1">
+            <div class="menu-text">
+                <h2>Tataki de Atún</h2>
+                <p>Atún rojo sellado con costra de sésamo negro, sobre una cama de aguacate y mango, acompañado de una reducción de soja y wasabi fresco.</p>
+                <span class="price">$32</span>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://www.babaphuket.com/images/dining/best-thai-restaurants-phuket-moo-hong.jpg" alt="Plato 2">
+            <div class="menu-text">
+                <h2>Risotto de Trufa</h2>
+                <p>Arroz carnaroli cocido en caldo de hongos porcini, terminado con mantequilla de trufa negra y parmesano reggiano de 24 meses.</p>
+                <span class="price">$28</span>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://www.babaphuket.com/images/dining/best-thai-restaurants-phuket-crab-deep-fried-prawns-with-tamarind-sauce.jpg" alt="Plato 3">
+            <div class="menu-text">
+                <h2>Cordero Confitado</h2>
+                <p>Paletilla de cordero cocida a baja temperatura durante 24 horas, servida con puré de apionabo y reducción de vino tinto.</p>
+                <span class="price">$45</span>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="experience">
+        <div class="parallax-images">
+            <div class="parallax-image" style="background-image: url('https://www.babaphuket.com/images/dining/best-thai-restaurants-phuket-fine-dining-baba-soul-food.jpg')"></div>
+            <div class="parallax-image" style="background-image: url('https://www.babaphuket.com/images/dining/best-thai-restaurants-food-phuket.jpg')"></div>
+            <div class="parallax-image" style="background-image: url('https://www.babaphuket.com/images/dining/best-thai-restaurants-phuket-baba-soul-food-thai-dining-experience.jpg')"></div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="contact-content">
+            <h2>Reserva tu experiencia</h2>
+            <p>+34 900 123 456<br>info@umami.com</p>
+        </div>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animación del hero
+        gsap.to('.hero-content', {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: 'power3.out',
+            delay: 0.5
+        });
+
+        // Animación del texto de scroll
+        gsap.to('.scroll-text', {
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1
+            },
+            x: '-50%'
+        });
+
+        // Animación de los platos del menú
+        gsap.utils.toArray('.menu-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                opacity: 0,
+                y: 100,
+                duration: 1,
+                delay: i * 0.2
+            });
+        });
+
+        // Animación de las imágenes parallax
+        gsap.utils.toArray('.parallax-image').forEach((image, i) => {
+            gsap.to(image, {
+                scrollTrigger: {
+                    trigger: '.experience',
+                    start: 'top center',
+                    end: 'bottom center',
+                    toggleActions: 'play none none reverse',
+                    scrub: true
+                },
+                opacity: 1,
+                scale: 1,
+                y: i * 50,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animación de la sección de contacto
+        gsap.to('.contact-content', {
+            scrollTrigger: {
+                trigger: '.contact',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1
+        });
+    </script>
+</body>
+</html>
