@@ -12,8 +12,8 @@
         }
 
         body {
-            background-color: var(--dark);
-            color: var(--light);
+            background-color: var(--light);
+            color: var(--dark);
             overflow-x: hidden;
         }
 
@@ -86,7 +86,7 @@
         .menu-text p {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #999;
+            color: #696969;
             margin-bottom: 2rem;
         }
 

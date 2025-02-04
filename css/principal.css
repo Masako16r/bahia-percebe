@@ -13,6 +13,7 @@ body {
 /* Header y Navegación */
 .header {
     position: fixed;
+    top: 0;
     width: 100%;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.95);
@@ -52,74 +53,125 @@ body {
 }
 
 .nav-links a:hover {
-    color: #007bff;
+    color:  #e6b17e;
 }
 
 /* Menú desplegable */
 .menu-dropdown {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 300px;
+    left: -100%; /* Cambiado a left */
+    width: 400px;
     height: 100vh;
-    background: white;
-    padding: 2rem;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: left 0.3s ease;
+    background: linear-gradient(145deg, #2b2b2b, #1a1a1a);
+    padding: 3rem 2rem;
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.3); /* Cambiado el lado de la sombra */
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Cambiado a left */
     z-index: 1001;
-}
-
-.menu-dropdown.active {
-    left: 0;
-}
-
-.menu-header {
+    color: white;
+ }
+ 
+ .menu-dropdown.active {
+    left: 0; /* Cambiado a left */
+ }
+ 
+ .menu-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2rem;
-}
-
-.language {
+    align-items: center;
+    margin-bottom: 3.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+ }
+ 
+ .language {
     cursor: pointer;
-    padding: 0.5rem;
-}
-
-.close-menu {
+    padding: 0.8rem 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+ }
+ 
+ .language:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+ }
+ 
+ .close-menu {
     cursor: pointer;
-}
-
-.menu-list {
-    list-style: none;
-}
-
-.menu-list li {
-    padding: 0.8rem 0;
-    cursor: pointer;
-}
-
-.menu-list li:hover {
-    color: #007bff;
-}
-
-.email {
-    position: absolute;
-    bottom: 2rem;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-}
-
-.main-content section {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+ }
+ 
+ .close-menu:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(90deg);
+ }
+ 
+ .menu-list {
+    list-style: none;
+    margin-top: 2rem;
+ }
+ 
+ .menu-list li {
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0);
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    color: white; /* Color base para todos los elementos */
+ }
+ 
+ .menu-list li a {
+    text-decoration: none; /* Quita el subrayado */
+    color: white; /* Mismo color que los elementos sin enlace */
+    display: block; /* Hace que todo el espacio sea clickeable */
+    width: 100%;
+    height: 100%;
+ }
+ 
+ .menu-list li:hover,
+ .menu-list li:hover a {
+    background: rgba(255, 255, 255, 0.08);
+    padding-left: 2rem;
+    color:  #e6b17e;
+ }
+ 
+ .email {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
     align-items: center;
-    text-align: center;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-}
+    gap: 1rem;
+    transition: all 0.3s ease;
+ }
+ 
+ .email:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+ }
+ 
+ /* Asegurarse de que todos los enlaces dentro del menú tengan el mismo estilo */
+ .menu-dropdown a {
+    text-decoration: none;
+    color: white;
+ }
 
 
 /* Estilos de texto */
@@ -164,6 +216,89 @@ p {
 }
 
 .scroll-dot.active {
-    background: #007bff;
+    background:  #e6b17e;
     transform: scale(1.5);
+}
+
+.chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #e6b17e;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.chatbot-button i {
+    font-size: 24px;
+}
+
+/* Estilos para la ventana del chatbot */
+.chatbot-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    box-shadow: rgba(255, 255, 255, 0.08);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.chatbot-header {
+    padding: 10px;
+    background-color: #e6b17e;
+    color: black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header .close-chat {
+    cursor: pointer;
+}
+
+.chatbot-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.chatbot-footer {
+    padding: 10px;
+    border-top: rgba(255, 255, 255, 0.08);
+    display: flex;
+}
+
+.chatbot-footer input {
+    flex: 1;
+    padding: 8px;
+    border: rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.chatbot-footer button {
+    padding: 8px 12px;
+    background-color: #e6b17e;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.chatbot-button {
+    background-color: #e6b17e;
 }

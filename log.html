@@ -1,14 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habitaciones</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <title>Bhaia Percebe</title>
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/estilolog.css">
     <link rel="stylesheet" href="css/principal.css">
     <script src="js/script.js" defer></script>
     <script src="js/main.js" defer></script>
+    <style>
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .room-modal {
+            display: none;
+            position: fixed;
+            top: 53%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            z-index: 1000;
+            width: 90%;
+            max-width: 600px;
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .room-modal.active {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .room-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .room-modal-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .room-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.2s ease;
+            padding: 0.5rem;
+        }
+
+        .room-modal-close:hover {
+            color: #000;
+        }
+
+        .room-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            color: #4a5568;
+        }
+
+        .room-description {
+            line-height: 1.6;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+
+        .room-price {
+            font-size: 1.25rem;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .book-button {
+            background: #2d3748;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .book-button:hover {
+            background: #1a202c;
+        }
+
+        .info-box {
+            display: none;
+            position: absolute;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .info-box.active {
+            display: block;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .amenities-section,
+        .services-section {
+            margin-top: 2rem;
+        }
+
+        .amenities-section h3,
+        .services-section h3 {
+            font-size: 1.25rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        .services-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .services-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .services-list li::before {
+            content: "✓";
+            color: #48bb78;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <header class="header">
     <nav class="navbar">
@@ -51,72 +260,95 @@
         <i class="fas fa-envelope"></i> Correo
     </div>
 </nav>
+
 <body>
     <div class="section">
         <!-- Reemplazamos moving-image por video-background -->
         <div class="video-background">
             <video autoplay muted loop playsinline>
-                <source src="https://download-video-ak.vimeocdn.com/v3-1/playback/9462809f-6b67-4761-8061-e221f6696a9a/92d0287b-79421296?__token__=st=1737537671~exp=1737552071~acl=%2Fv3-1%2Fplayback%2F9462809f-6b67-4761-8061-e221f6696a9a%2F92d0287b-79421296%2A~hmac=bb4fd109d259f77ddc6140d359fcff799da1bbafa71df8a07149407f3be39ad7&r=dXMtZWFzdDE%3D" type="video/mp4">
+                <source
+                    src="https://download-video-ak.vimeocdn.com/v3-1/playback/9dce8fdb-bc30-47f9-95b2-50984a69b358/089f4c46-1a3b4136?__token__=st=1738657431~exp=1738671831~acl=%2Fv3-1%2Fplayback%2F9dce8fdb-bc30-47f9-95b2-50984a69b358%2F089f4c46-1a3b4136%2A~hmac=5659cb711de99ddec4eeddc6154337385abd52a3eff2957829b3bc769d819ed7&r=dXMtZWFzdDE%3D"
+                    type="video/mp4">
             </video>
         </div>
         <div class="shadow-title">bahía percebe</div>
         <ul class="case-study-wrapper">
             <li class="case-study-name">
-                <a href="#" class="hover-target">tanya</a>
+                <a href="#" class="hover-target">Confort</a>
             </li>
             <li class="case-study-name">
-                <a href="#" class="hover-target">helen</a>
+                <a href="#" class=" hover-target">Junior</a>
             </li>
             <li class="case-study-name">
-                <a href="#" class="hover-target">andrea</a>
+                <a href="#" class="hover-target">Deluxe</a>
             </li>
             <li class="case-study-name">
-                <a href="#" class="hover-target">diana</a>
+                <a href="#" class="hover-target">Luxe</a>
             </li>
         </ul>
         <ul class="case-study-images">
             <li>
-                <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite.jpg" alt="Suite Tanya">
-                <p>suite tanya</p>
+                <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite.jpg"
+                    alt="Suite Tanya">
+                <p>Confort habitacion</p>
                 <div class="info">
-                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-2-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket-bathroom.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket-living-room.jpg" alt="amenity">
-                    <a href="#" class="hover-target">info</a>
+                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-2-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket-bathroom.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/phuket-residence-villa-two-bedroom-pool-suite-sri-panwa-luxury-hotel-phuket-living-room.jpg"
+                        alt="amenity">
+                    <a href="#" onclick="showInfo(event);">info</a>
                 </div>
             </li>
             <li>
-                <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-6-star-hotel-panoramic-ocean-view.jpg" alt="Suite Helen">
-                <p>suite helen</p>
+                <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-6-star-hotel-panoramic-ocean-view.jpg"
+                    alt="Suite Helen">
+                <p>Junior habitacion</p>
                 <div class="info">
-                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-6-star-hotel-residence-sripanwa.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-residence-6-star-hotel.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-residence-sunset-view.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-hotel-private-luxury-pool-villa-6-star-hotel-bathroom.jpg" alt="amenity">
-                    <a href="#" class="hover-target">info</a>
+                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-6-star-hotel-residence-sripanwa.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-residence-6-star-hotel.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-pool-villa-phuket-residence-sunset-view.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/4br-luxury-residential-hotel-private-luxury-pool-villa-6-star-hotel-bathroom.jpg"
+                        alt="amenity">
+                    <a href="#" onclick="showInfo(event);">info</a>
                 </div>
             </li>
             <li>
-                <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-infinity-pool.jpg" alt="Suite Andrea">
-                <p>suite andrea</p>
+                <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-infinity-pool.jpg"
+                    alt="Suite Andrea">
+                <p>Deluxe habitacion</p>
                 <div class="info">
-                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-pool-villa.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-pool-villa-master-room.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-luxury-hotel-resort-thailand.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-outdoor-living-room.jpg" alt="amenity">
-                    <a href="#" class="hover-target">info</a>
+                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-pool-villa.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-pool-villa-master-room.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-luxury-hotel-resort-thailand.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/family-vacations-in-phuket-four-bedroom-residence-villa-outdoor-living-room.jpg"
+                        alt="amenity">
+                    <a href="#" onclick="showInfo(event);">info</a>
                 </div>
             </li>
             <li>
-                <img src="https://www.sripanwa.com/images/villas/presidential-5br-pool-villa-private-luxury-hotel-phuket.jpg" alt="Suite Diana">
+                <img src="https://www.sripanwa.com/images/villas/presidential-5br-pool-villa-private-luxury-hotel-phuket.jpg"
+                    alt="Suite Diana">
                 <p>suite diana</p>
                 <div class="info">
-                    <img src="https://www.sripanwa.com/images/villas/presidential-5-bedroom-pool-villa-private-luxury-hotel-phuket-ocean-view.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/presidential-5br-pool-villa-private-luxury-hotel-phuket-bathroom.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/presidential-5-bedroom-pool-villa-private-luxury-hotel-phuket-bathroom.jpg" alt="amenity">
-                    <img src="https://www.sripanwa.com/images/villas/presidential-five-bedroom-residence-villa-in-phuket-private-pool-andaman-sea-views.jpg" alt="amenity">
-                    <a href="#" class="hover-target">info</a>
+                    <img src="https://www.sripanwa.com/images/villas/presidential-5-bedroom-pool-villa-private-luxury-hotel-phuket-ocean-view.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/presidential-5br-pool-villa-private-luxury-hotel-phuket-bathroom.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/presidential-5-bedroom-pool-villa-private-luxury-hotel-phuket-bathroom.jpg"
+                        alt="amenity">
+                    <img src="https://www.sripanwa.com/images/villas/presidential-five-bedroom-residence-villa-in-phuket-private-pool-andaman-sea-views.jpg"
+                        alt="amenity">
+                    <a href="#" onclick="showInfo(event);">info</a>
                 </div>
             </li>
         </ul>
@@ -126,19 +358,85 @@
     <div class='cursor2' id="cursor2"></div>
     <div class='cursor3' id="cursor3"></div>
 
+    <!-- Info Box -->
+    <div class="overlay" id="overlay"></div>
+    <div class="room-modal" id="infoBox">
+        <div class="room-modal-header">
+            <h2 class="room-modal-title" id="infoTitle"></h2>
+            <button class="room-modal-close" onclick="closeInfo()">×</button>
+        </div>
+        <div class="room-modal-content">
+            <p class="room-description" id="infoDescription"></p>
+
+            <!-- Grid de características principales -->
+            <div class="room-features">
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path>
+                    </svg>
+                    <span id="roomSize"></span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    <span id="roomView"></span>
+                </div>
+                <div class="feature-item">
+                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                        </path>
+                    </svg>
+                    <span id="roomCapacity"></span>
+                </div>
+            </div>
+
+            <!-- Sección de amenidades -->
+            <div class="amenities-section">
+                <h3>Amenidades</h3>
+                <div class="amenities-grid" id="roomAmenities"></div>
+            </div>
+
+            <!-- Sección de servicios incluidos -->
+            <div class="services-section">
+                <h3>Servicios Incluidos</h3>
+                <ul class="services-list" id="roomServices"></ul>
+            </div>
+
+            <p class="room-price" id="roomPrice"></p>
+            <button class="book-button">Reservar Ahora</button>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        (function($) {
+
+        function closeInfo() {
+            const modal = document.getElementById('infoBox');
+            const overlay = document.getElementById('overlay');
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Añadir el evento de cierre al botón de cerrar
+        document.querySelector('.room-modal-close').addEventListener('click', closeInfo);
+        (function ($) {
             "use strict";
 
             // Cursor movement
-            document.getElementsByTagName("body")[0].addEventListener("mousemove", function(n) {
+            document.getElementsByTagName("body")[0].addEventListener("mousemove", function (n) {
                 t.style.left = n.clientX + "px",
-                t.style.top = n.clientY + "px",
-                e.style.left = n.clientX + "px",
-                e.style.top = n.clientY + "px",
-                i.style.left = n.clientX + "px",
-                i.style.top = n.clientY + "px"
+                    t.style.top = n.clientY + "px",
+                    e.style.left = n.clientX + "px",
+                    e.style.top = n.clientY + "px",
+                    i.style.left = n.clientX + "px",
+                    i.style.top = n.clientY + "px"
             });
 
             var t = document.getElementById("cursor"),
@@ -164,35 +462,35 @@
 
             // Background movement
             var pos = 0;
-            window.setInterval(function() {
+            window.setInterval(function () {
                 pos++;
-                document.getElementsByClassName('moving-image')[0].style.backgroundPosition = pos + "px 0px";
+                document.getElementsByClassName('video-background')[0].style.backgroundPosition = pos + "px 0px";
             }, 18);
 
             // Room selection
-            $(document).ready(function() {
-                $('.case-study-name:nth-child(1)').on('mouseenter', function() {
+            $(document).ready(function () {
+                $('.case-study-name:nth-child(1)').on('mouseenter', function () {
                     $('.case-study-name.active').removeClass('active');
                     $('.case-study-images li.show').removeClass("show");
                     $('.case-study-images li:nth-child(1)').addClass("show");
                     $('.case-study-name:nth-child(1)').addClass('active');
                 });
 
-                $('.case-study-name:nth-child(2)').on('mouseenter', function() {
+                $('.case-study-name:nth-child(2)').on('mouseenter', function () {
                     $('.case-study-name.active').removeClass('active');
                     $('.case-study-images li.show').removeClass("show");
                     $('.case-study-images li:nth-child(2)').addClass("show");
                     $('.case-study-name:nth-child(2)').addClass('active');
                 });
 
-                $('.case-study-name:nth-child(3)').on('mouseenter', function() {
+                $('.case-study-name:nth-child(3)').on('mouseenter', function () {
                     $('.case-study-name.active').removeClass('active');
                     $('.case-study-images li.show').removeClass("show");
                     $('.case-study-images li:nth-child(3)').addClass("show");
                     $('.case-study-name:nth-child(3)').addClass('active');
                 });
 
-                $('.case-study-name:nth-child(4)').on('mouseenter', function() {
+                $('.case-study-name:nth-child(4)').on('mouseenter', function () {
                     $('.case-study-name.active').removeClass('active');
                     $('.case-study-images li.show').removeClass("show");
                     $('.case-study-images li:nth-child(4)').addClass("show");
@@ -204,6 +502,181 @@
             });
 
         })(jQuery);
+
+        // Info Box Functions
+        const roomData = {
+            'Confort': {
+                title: 'Habitación Confort',
+                description: ' En el corazón de un oasis de vegetación, nuestras habitaciones Comfort le ofrecen un momento de total tranquilidad. Todas estas habitaciones disponen de balcón o terraza privada, lo que le garantiza una gran privacidad.',
+                size: '30 - 45 m2',
+                view: ' Vistas a la playa',
+                capacity: ' Máximo 2 adultos + 1 niño (-16 años)',
+                price: 'Desde 180€/noche',
+                amenities: [
+                    'Balcón / Terraza',
+                    'Cama doble o 2 camas individuales',
+                    'Duchas a ras de suelo o bañeras',
+                    'Disponible para PMR',
+                    'Wi-Fi de alta velocidad',
+                    'Cafetera Nespresso'
+                ],
+                services: [
+                    'Desayuno buffet',
+                    'Acceso al gimnasio',
+                    'Servicio de habitaciones 24h',
+                    'Limpieza diaria',
+                    'Wifi de alta velocidad',
+                    'Parking gratuito'
+                ]
+            },
+            'Junior': {
+                title: 'Suite Junior',
+                description: 'Una habitación pensada para el público más joven en la que se incluyen actividades ociosas de todo tipo para los más pequeños y así dejar a los más adultos tiempo de meditación y descanso. Los msimos empleados también realizan excursiones',
+                size: '45- 60 m2',
+                view: 'Vistas a la playa',
+                capacity: ' Máximo 2 adultos + 3 niños (-16 años)',
+                price: 'Desde 250€/noche',
+                amenities: [
+                    'Balcón / Zona común',
+                    'Cama doble o 2 camas individuales',
+                    'Disponible para PMR',
+                    'Duchas a ras de suelo',
+                    'Wi-Fi de alta velocidad',
+                    'Cafetera Nespresso',
+                    'Zona de trabajo'
+                ],
+                services: [
+                    'Desayuno buffet premium',
+                    'Acceso al spa y gimnasio',
+                    'Servicio de habitaciones 24h',
+                    'Limpieza dos veces al día',
+                    'Servicio de mayordomo',
+                    'Parking privado'
+                ]
+            },
+            'Deluxe': {
+                title: 'Suite Deluxe',
+                description: 'La Habitación Deluxe esta diseñada para brindar comodidad, elegancia y una experiencia inolvidable frente al mar. Cada detalle de esta habitación ha sido cuidadosamente seleccionado para reflejar la esencia costera y la sofisticación que caracteriza al hotel. Focalizada en el publico más adulto.',
+                size: ' 40-50  m2',
+                view: ' Vistas a la playa',
+                capacity: ' Máximo 2 adultos + 2 niños (-16 años)',
+                price: 'Desde 350€/noche',
+                amenities: [
+                    'Terraza interior y exterior',
+                    '2 camas dobles',
+                    'Desayuno completo',
+                    'Duchas a ras de suelo o bañeras',
+                    'Wi-Fi de alta velocidad',
+                    'Accesorios de baño de lujo',
+                    'Disponible para PMR',
+                    'Zona de trabajo ergonómica'
+                ],
+                services: [
+                    'Desayuno a la carta en la habitación',
+                    'Acceso ilimitado al spa',
+                    'Servicio de mayordomo 24h',
+                    'Limpieza personalizada',
+                    'Transfer privado aeropuerto',
+                    'Late check-out gratuito',
+                    'Reserva prioritaria en restaurantes'
+                ]
+            },
+            'Luxe': {
+                title: 'Suite Luxe',
+                description: 'Se trata de la habitación más prestigiosa del hotel contando con una mayor amplitud, un servicio personaliazdo 24 h e incluye una piscina privada. Este tipo dehabitaciones se encuentran a pie directo de playa.',
+                size: '65-80 m2',
+                view: 'Salida a la playa',
+                capacity: 'Máximo 4 adultos + 2 niños (-16 años)',
+                price: 'Desde 500€/noche',
+                amenities: [
+                    'Terraza interior y exterior',
+                    ' Desayuno completo',
+                    ' Duchas a ras de suelo y piscina',
+                    'Jacuzzi exterior privado',
+                    'Disponible para PMR',
+                    'Bar premium completo',
+                    'Wi-Fi de alta velocidad',
+                    'Oficina privada',
+                    'Piscina infinity privada'
+                ],
+                services: [ 
+                    'Chef privado disponible',
+                    'Mayordomo personal 24/7',
+                    'Spa en suite disponible',
+                    'Limpieza personalizada',
+                    'Transfer privado en lujo',
+                    'Check-in/out flexible',
+                    'Concierge exclusivo',
+                    'Experiencias personalizadas',
+                    'Acceso VIP a todas las instalaciones'
+                ]
+            }
+        };
+
+        // Arreglo con los nombres de las habitaciones en el mismo orden que en el HTML
+        const roomKeys = ['Confort', 'Junior', 'Deluxe', 'Luxe'];
+
+        function showInfo(event) {
+            // Prevenir la acción por defecto del enlace
+            event.preventDefault();
+
+            // Obtiene todos los <li> de la sección de imágenes
+            const liElements = document.querySelectorAll('.case-study-images li');
+            let activeIndex = -1;
+
+            // Itera sobre cada li para encontrar cuál tiene la clase "show"
+            liElements.forEach((li, index) => {
+                if (li.classList.contains('show')) {
+                    activeIndex = index;
+                }
+            });
+
+            // Si no se encontró ninguno, se sale de la función
+            if (activeIndex === -1) {
+                return;
+            }
+
+            // Utiliza el índice para obtener el tipo de habitación correspondiente
+            const roomType = roomKeys[activeIndex];
+            const data = roomData[roomType];
+
+            // Verifica que se encontró la información para la habitación
+            if (!data) {
+                console.error("No se encontró información para la habitación:", roomType);
+                return;
+            }
+
+            // Actualizar contenido del modal
+            document.getElementById('infoTitle').textContent = data.title;
+            document.getElementById('infoDescription').textContent = data.description;
+            document.getElementById('roomSize').textContent = data.size;
+            document.getElementById('roomView').textContent = data.view;
+            document.getElementById('roomCapacity').textContent = data.capacity;
+            document.getElementById('roomPrice').textContent = data.price;
+
+            // Actualizar amenidades
+            const amenitiesContainer = document.getElementById('roomAmenities');
+            amenitiesContainer.innerHTML = data.amenities.map(amenity => `
+    <div class="amenity-item">
+      <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+      </svg>
+      ${amenity}
+    </div>
+  `).join('');
+
+            // Actualizar servicios
+            const servicesContainer = document.getElementById('roomServices');
+            servicesContainer.innerHTML = data.services.map(service => `<li>${service}</li>`).join('');
+
+            // Mostrar el modal y el overlay
+            const modal = document.getElementById('infoBox');
+            const overlay = document.getElementById('overlay');
+            overlay.classList.add('active');
+            modal.classList.add('active');
+        }
+
     </script>
 </body>
+
 </html>
