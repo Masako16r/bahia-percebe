@@ -45,5 +45,5 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
     // Si el correo y la contraseña son correctos, redirigir o mostrar mensaje de éxito
     console.log('Inicio de sesión exitoso');
-    window.location.href = 'Index.html';  // Redirige a una página de bienvenida
+    window.location.href = 'index.html';  // Redirige a una página de bienvenida
 });
