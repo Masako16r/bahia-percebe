@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deja tu Reseña</title>
+    <link rel="stylesheet" href="css/principal.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.15.0/dist/umd/supabase.min.js"></script>
+    <link rel="stylesheet" href="css/reseñas.css">
+    <script src="js/reseñas.js" defer></script> <!-- Archivo JS para el manejo de reseñas -->
+    <script src="js/script.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i> Bahía Percebe
+            </a>
+            <div class="nav-links">
+                <a href="#" onclick="toggleMenu()">Menú</a>
+                <a href="reseñas.html">Reseñas</a>
+                <a href="#">Vales de regalo</a>
+                <a href="reservas.html">Libro</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<nav class="menu-dropdown" id="menuDropdown">
+    <div class="menu-header">
+        <span class="language">Inglés</span>
+        <span class="language">Español</span>
+        <span class="language">Francés</span>
+        <span class="close-menu" onclick="toggleMenu()">✕</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="/login.html">Login</a></li>
+        <li><a href="/Index.html">Inicio</a></li>
+        <li>Hotel</li>
+        <li><a href="/log.html">Habitaciones y suites</a></li>
+        <li><a href="/restaurante.html">Restaurante y bar</a></li>
+        <li><a href="/actividades.html">Actividades</a></li>
+        <li>Spa & Bienestar</li>
+        <li><a href="/exterior.html">Exterior</a></li>
+        <li>Ofertas especiales</li>
+        <li><a href="/reseñas.html">Reseñas</a></li>
+        <li>Prepara tu viaje</li>
+        <li><a href="/contacto2.html">Contacto</a></li>
+    </ul>
+</nav>
+<body>
+    <div class="reseña-container">
+        <h1>Deja tu Reseña</h1>
+        <form id="reseñaForm">
+            <div class="input-group">
+                <label for="puntuacion">Puntuación (1-5):</label>
+                <input type="number" id="puntuacion" name="puntuacion" min="1" max="5" required>
+            </div>
+            <div class="input-group">
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" name="comentario" required></textarea>
+            </div>
+            <button type="submit">Enviar Reseña</button>
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </form>
+    </div>
+</body>
+</html>

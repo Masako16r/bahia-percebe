@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Hotel de Lujo</title>
+    <link rel="stylesheet" href="css/chab.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="header-content">
+                <div class="header-icon">
+                    <span class="material-icons">hotel</span>
+                </div>
+                <div class="header-text">
+                    <h2>Asistente del Hotel</h2>
+                    <p>En línea</p>
+                </div>
+                <div class="header-actions">
+                    <span class="material-icons">more_vert</span>
+                </div>
+            </div>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="welcome-message">
+                Bienvenido. Seleccione una categoría para obtener información.
+            </div>
+        </div>
+        <div class="chat-input">
+            <div class="input-container">
+                <div class="category-selector" id="categorySelector">
+                    <button class="category-btn" data-category="reservas">Reservas</button>
+                    <button class="category-btn" data-category="servicios">Servicios</button>
+                    <button class="category-btn" data-category="restaurantes">Restaurantes</button>
+                    <button class="category-btn" data-category="ubicacion">Ubicación</button>
+                </div>
+                <div class="questions-container" id="questionsContainer">
+                    <!-- Questions will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/chab.js"></script>
+</body>
+</html>

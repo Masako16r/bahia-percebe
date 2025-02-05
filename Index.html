@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhaia Percebe</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="stylesheet" href="css/principal.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/main.js" defer></script>
+
+</head>
+<header class="header">
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <i class="fas fa-crown"></i> Bahía Percebe
+            </a>
+            <div class="nav-links">
+                <a href="#" onclick="toggleMenu()">Menú</a>
+                <a href="reseñas.html">Reseñas</a>
+                <a href="#">Vales de regalo</a>
+                <a href="reservas.html">Libro</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<nav class="menu-dropdown" id="menuDropdown">
+    <div class="menu-header">
+        <span class="language">Inglés</span>
+        <span class="language">Español</span>
+        <span class="language">Francés</span>
+        <span class="close-menu" onclick="toggleMenu()">✕</span>
+    </div>
+    <ul class="menu-list">
+        <li><a href="/login.html">Login</a></li>
+        <li><a href="/Index.html">Inicio</a></li>
+        <li>Hotel</li>
+        <li><a href="/log.html">Habitaciones y suites</a></li>
+        <li><a href="/restaurante.html">Restaurante y bar</a></li>
+        <li><a href="/actividades.html">Actividades</a></li>
+        <li>Spa & Bienestar</li>
+        <li><a href="/exterior.html">Exterior</a></li>
+        <li>Ofertas especiales</li>
+        <li><a href="/reseñas.html">Reseñas</a></li>
+        <li>Prepara tu viaje</li>
+        <li><a href="/contacto2.html">Contacto</a></li>
+    </ul>
+</nav>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 href=>BAHÍA PERCEBE</h1>
+            <p>Un hotel de super lujo</p>
+        </div>
+    </section>
+
+    <div class="scroll-text">BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE · BAHÍA PERCEBE</div>
+
+    <section class="menu-section">
+        <div class="menu-item">
+            <img src="img/habitacionfon.jpg" alt="habitacion ">
+            <div class="menu-text">
+                <h2>Habitaciones y Suites</h2>
+                <p>Sumérgete en un ambiente auténtico en
+                    nuestras exclusivas habitaciones. Diseñadas
+                    para ofrecer la máxima comodidad, cada
+                    espacio combina materiales naturales, como
+                    madera cálida y piedra, con detalles modernos
+                    que evocan sofisticación.</p>
+                <span class="button reservar-btn"><a href="log.html">Reservar</a></span>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="img/restaurantefon.jpg" alt="restaurante ">
+            <div class="menu-text">
+                <h2>Restaurante y Bar</h2>
+                <p>Descubre nuestro restaurante y bar, con su
+                    hermosa terraza con vistas al mar, y también
+                    se verá las impresionantes vistas del paraíso del
+                    mediterráneo</p>
+                <span class="button reservar-btn"><a href="restaurante.html">Reservar</a></span>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="img/spafon.jpg" alt="habitacion ">
+            <div class="menu-text">
+                <h2>Spa y Bienestar</h2>
+                <p>Sumérgete en un mundo de calma y bienestar en
+                    nuestro exclusivo spa interior, diseñado para
+                    revitalizar cuerpo y mente mientras disfrutas de
+                    vistas impresionantes al mar. Este espacio único
+                    combina la serenidad del diseño contemporáneo
+                    con la majestuosidad del entorno natural, creando
+                    un ambiente perfecto para desconectarte del estrés
+                    
+                    cotidiano y reencontrarte contigo mismo.</p>
+                <span class="button reservar-btn"><a href="log.html">Reservar</a></span>
+            </div>
+        </div>
+
+
+        <div class="menu-item">
+            <img src="img/actividadfon.jpg" alt="habitacion ">
+            <div class="menu-text">
+                <h2>Actividades al Aire Libre</h2>
+                <p>Te ofrecemos una lista
+                    de actividades al aire
+                    libre que Bahía Percebe
+                    podría ofrecer en
+                    Córcega, aprovechando
+                    su entorno natural y su
+                    integración con el
+                    paisaje local.</p>
+                <span class="button reservar-btn"><a href="actividades.html">Reservar</a></span>
+            </div>
+        </div>
+        <div class="chatbot-button" onclick="toggleChat()">
+            <i class="fas fa-comment"></i> <!-- Icono de chat -->
+        </div>
+        
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <span>Chatbot</span>
+                <span class="close-chat" onclick="toggleChat()">✕</span>
+            </div>
+            <div class="chatbot-body" id="chatbotBody">
+                <p>Bienvenido al chatbot de Bahía Percebe. ¿En qué puedo ayudarte?</p>
+            </div>
+            <div class="chatbot-footer">
+                <div id="options">
+                    <!-- Botones de opciones predefinidas -->
+                    <button onclick="selectOption('Horario de atención')">Horario de atención</button>
+                    <button onclick="selectOption('Ubicación')">Ubicación</button>
+                    <button onclick="selectOption('Contacto')">Contacto</button>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <style>
+
+.reservar-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #999; /* Borde del botón */
+    background-color: transparent; /* Fondo transparente */
+    color: #999; /* Color del texto */
+    text-decoration: none; /* Quitar subrayado del enlace */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease; /* Transición suave */
+    cursor: pointer;
+    border-radius: 0; /* Bordes cuadrados */
+}
+
+.reservar-btn:hover {
+    border-color: #007bff; /* Cambiar color del borde al pasar el mouse */
+    color: #007bff; /* Cambiar color del texto al pasar el mouse */
+}
+
+.reservar-btn a {
+    color: inherit; /* Heredar el color del texto del botón */
+    text-decoration: none; /* Quitar subrayado del enlace */
+}
+            .center-button-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; 
+            }
+            button {
+                width: 10em;
+                position: relative;
+                height: 3.5em;
+                border: 3px ridge #000000;
+                outline: none;
+                background-color: transparent;
+                color: rgb(0, 0, 0);
+                transition: 1s;
+                border-radius: 0.2em;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            button::after {
+                content: "";
+                position: absolute;
+                top: -10px;
+                left: 3%;
+                width: 95%;
+                height: 40%;
+                background-color: #ffffff;
+                transition: 0.5s;
+                transform-origin: center;
+            }
+
+            button::before {
+                content: "";
+                transform-origin: center;
+                position: absolute;
+                top: 80%;
+                left: 3%;
+                width: 95%;
+                height: 40%;
+                background-color: #ffffff;
+                transition: 0.5s;
+            }
+
+            button:hover::before,
+            button:hover::after {
+                transform: scale(0);
+            }
+
+            button:hover {
+                box-shadow: inset 0px 0px 25px #000000;
+            }
+    </style>
+    <div class="center-button-container">
+        <a href="contacto2.html">
+            <button>Contacta con nosotros</button>
+        </a>
+    </div>
+
+    <script>
+
+function selectOption(option) {
+    const chatbotBody = document.getElementById('chatbotBody');
+    
+    // Mostrar la opción seleccionada por el usuario
+    chatbotBody.innerHTML += `<p><strong>Tú:</strong> ${option}</p>`;
+    
+    // Mostrar la respuesta del chatbot según la opción seleccionada
+    let response = '';
+    switch (option) {
+        case 'Horario de atención':
+            response = 'Nuestro horario de atención es de 9:00 AM a 6:00 PM de lunes a viernes.';
+            break;
+        case 'Ubicación':
+            response = 'Estamos ubicados en la Calle Falsa 123, Bahía Percebe.';
+            break;
+        case 'Contacto':
+            response = 'Puedes contactarnos al teléfono 123-456-7890 o al correo info@bahiapercebe.com.';
+            break;
+        default:
+            response = 'No entendí tu solicitud. Por favor, selecciona una opción válida.';
+    }
+    
+    chatbotBody.innerHTML += `<p><strong>Chatbot:</strong> ${response}</p>`;
+    
+    // Desplazar el scroll hacia abajo para mostrar el último mensaje
+    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+}
+
+// Función para enviar un mensaje escrito por el usuario
+function sendMessage() {
+    const userInput = document.getElementById('userInput');
+    const message = userInput.value.trim();
+    
+    if (message !== '') {
+        const chatbotBody = document.getElementById('chatbotBody');
+        
+        // Mostrar el mensaje del usuario
+        chatbotBody.innerHTML += `<p><strong>Tú:</strong> ${message}</p>`;
+        
+        // Aquí puedes agregar lógica para responder al mensaje escrito por el usuario
+        chatbotBody.innerHTML += `<p><strong>Chatbot:</strong> Gracias por tu mensaje. Lo revisaré y te responderé pronto.</p>`;
+        
+        // Limpiar el campo de entrada
+        userInput.value = '';
+        
+        // Desplazar el scroll hacia abajo para mostrar el último mensaje
+        chatbotBody.scrollTop = chatbotBody.scrollHeight;
+    }
+}
+
+// Función para mostrar/ocultar el chatbot
+function toggleChat() {
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'block' : 'none';
+}
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animación del hero
+        gsap.to('.hero-content', {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: 'power3.out',
+            delay: 0.5
+        });
+
+        // Animación del texto de scroll
+        gsap.to('.scroll-text', {
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 1
+            },
+            x: '-50%'
+        });
+
+        // Animación de los platos del menú
+        gsap.utils.toArray('.menu-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse'
+                },
+                opacity: 0,
+                y: 100,
+                duration: 1,
+                delay: i * 0.2
+            });
+        });
+
+        // Animación de las imágenes parallax
+        gsap.utils.toArray('.parallax-image').forEach((image, i) => {
+            gsap.to(image, {
+                scrollTrigger: {
+                    trigger: '.experience',
+                    start: 'top center',
+                    end: 'bottom center',
+                    toggleActions: 'play none none reverse',
+                    scrub: true
+                },
+                opacity: 1,
+                scale: 1,
+                y: i * 50,
+                duration: 1,
+                ease: 'power2.out'
+            });
+        });
+
+        // Animación de la sección de contacto
+        gsap.to('.contact-content', {
+            scrollTrigger: {
+                trigger: '.contact',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1
+        });
+    </script>
+</body>
+</html>

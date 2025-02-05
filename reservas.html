@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhaia Percebe</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script>
+        function openRegisterWindow() {
+            window.location.href = "ruta-a-tu-ventana-de-registro.html";
+        }
+
+        function openCalendar(type, event) {
+            let calendarContainer = document.getElementById('calendar-container-' + type);
+            if (!calendarContainer) {
+                calendarContainer = document.createElement('div');
+                calendarContainer.id = 'calendar-container-' + type;
+                calendarContainer.style.position = 'absolute';
+                calendarContainer.style.background = '#fff';
+                calendarContainer.style.border = '1px solid #d1bfa3';
+                calendarContainer.style.padding = '10px';
+                calendarContainer.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.2)';
+                calendarContainer.style.borderRadius = '4px';
+
+                const buttonRect = event.target.getBoundingClientRect();
+                calendarContainer.style.top = `${buttonRect.bottom + window.scrollY}px`;
+                calendarContainer.style.left = `${buttonRect.left + window.scrollX}px`;
+
+                calendarContainer.innerHTML = `
+                    <label for="calendar-input-${type}">Selecciona la fecha ${type === 'start' ? 'de inicio' : 'final'}:</label>
+                    <input type="date" id="calendar-input-${type}" style="padding: 5px; font-size: 14px; border: 1px solid #d1bfa3; border-radius: 4px;">
+                    <button onclick="closeCalendar('${type}')" style="margin-left: 10px; padding: 5px 10px; background-color: #d1bfa3; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Cerrar</button>
+                `;
+                document.body.appendChild(calendarContainer);
+            }
+        }
+
+        function closeCalendar(type) {
+            const calendarContainer = document.getElementById('calendar-container-' + type);
+            if (calendarContainer) {
+                document.body.removeChild(calendarContainer);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="search-container">
+        <div style="grid-column: span 2;">
+            <div class="label"></div>
+            <button class="button" onclick="openRegisterWindow()">
+                <img src="calendar-icon.png" alt="Calendar"> Registrarse
+            </button>
+        </div>
+        <div style="grid-column: span 1;">
+            <div class="label"></div>
+            <button class="button" onclick="openCalendar('start', event)">
+                <img src="calendar-icon.png" alt="Calendar"> Seleccionar Fecha Inicio
+            </button>
+        </div>
+        <div style="grid-column: span 1;">
+            <div class="label"></div>
+            <button class="button" onclick="openCalendar('end', event)">
+                <img src="calendar-icon.png" alt="Calendar"> Seleccionar Fecha Final
+            </button>
+        </div>
+        <div>
+            <div class="label">Adultos</div>
+            <input type="number" class="small-input" value="2" min="0">
+        </div>
+        <div>
+            <div class="label">Niños</div>
+            <input type="number" class="small-input" value="0" min="0">
+        </div>
+        <div>
+        <div>
+            <button class="animated-button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                  <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                  ></path>
+                </svg>
+                <span class="text">Busqueda</span>
+                <span class="circle"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                  <path
+                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                  ></path>
+                </svg>
+              </button>
+        </div>
+    </div>
+</body>
+</html>
